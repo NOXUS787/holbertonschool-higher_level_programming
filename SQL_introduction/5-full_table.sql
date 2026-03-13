@@ -1,2 +1,2 @@
-cd ~/holbertonschool-higher_level_programming/SQL_introduction
-emacs 5-full_table.sql
+-- prints the full description of first_table
+SHOW CREATE TABLE first_table;
