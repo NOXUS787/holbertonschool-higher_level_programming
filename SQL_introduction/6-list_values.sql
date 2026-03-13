@@ -1,2 +1,2 @@
-cd ~/holbertonschool-higher_level_programming/SQL_introduction
-emacs 6-list_values.sql
+-- lists all rows of the table first_table
+SELECT * FROM first_table;
