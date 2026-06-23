@@ -1,19 +1,71 @@
->>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
->>> bg = BaseGeometry()
->>> bg.integer_validator("width", 10)
->>> bg.integer_validator("height", 5)
->>> bg.integer_validator("name", "John")
-Traceback (most recent call last):
-TypeError: name must be an integer
->>> bg.integer_validator("age", 0)
-Traceback (most recent call last):
-ValueError: age must be greater than 0
->>> bg.integer_validator("distance", -4)
-Traceback (most recent call last):
-ValueError: distance must be greater than 0
->>> bg.integer_validator("age", True)
-Traceback (most recent call last):
-TypeError: age must be an integer
->>> bg.area()
-Traceback (most recent call last):
-Exception: area() is not implemented
+===========================
+Tests for BaseGeometry
+===========================
+
+Import the class:
+    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+Instantiation:
+    >>> bg = BaseGeometry()
+
+--- integer_validator valid cases ---
+
+Valid integer:
+    >>> bg.integer_validator("width", 10)
+
+Valid integer:
+    >>> bg.integer_validator("height", 5)
+
+--- integer_validator error cases ---
+
+String value:
+    >>> bg.integer_validator("name", "John")
+    Traceback (most recent call last):
+    TypeError: name must be an integer
+
+Zero value:
+    >>> bg.integer_validator("age", 0)
+    Traceback (most recent call last):
+    ValueError: age must be greater than 0
+
+Negative value:
+    >>> bg.integer_validator("distance", -4)
+    Traceback (most recent call last):
+    ValueError: distance must be greater than 0
+
+Boolean value:
+    >>> bg.integer_validator("age", True)
+    Traceback (most recent call last):
+    TypeError: age must be an integer
+
+Tuple value:
+    >>> bg.integer_validator("age", (4,))
+    Traceback (most recent call last):
+    TypeError: age must be an integer
+
+List value:
+    >>> bg.integer_validator("age", [3])
+    Traceback (most recent call last):
+    TypeError: age must be an integer
+
+Set value:
+    >>> bg.integer_validator("age", {3, 4})
+    Traceback (most recent call last):
+    TypeError: age must be an integer
+
+None value:
+    >>> bg.integer_validator("age", None)
+    Traceback (most recent call last):
+    TypeError: age must be an integer
+
+Missing one argument:
+    >>> bg.integer_validator("age")
+    Traceback (most recent call last):
+    TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+--- area ---
+
+area() not implemented:
+    >>> bg.area()
+    Traceback (most recent call last):
+    Exception: area() is not implemented
