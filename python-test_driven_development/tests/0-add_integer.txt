@@ -36,6 +36,26 @@ Negative floats are truncated toward zero:
     >>> add_integer(-1.9, 0)
     -1
 
+NaN cannot be converted to an integer:
+
+    >>> add_integer(float('nan'))
+    Traceback (most recent call last):
+    ValueError: cannot convert float NaN to integer
+
+    >>> add_integer(2, float('nan'))
+    Traceback (most recent call last):
+    ValueError: cannot convert float NaN to integer
+
+Infinity overflows when converted to an integer:
+
+    >>> add_integer(float('inf'))
+    Traceback (most recent call last):
+    OverflowError: cannot convert float infinity to integer
+
+    >>> add_integer(2, float('-inf'))
+    Traceback (most recent call last):
+    OverflowError: cannot convert float infinity to integer
+
 A non-numeric first argument raises a TypeError:
 
     >>> add_integer(None)
