@@ -1,6 +1,63 @@
->>> add_integer(float('inf'), 2)
-Traceback (most recent call last):
-OverflowError: cannot convert float infinity to integer
->>> add_integer(float('nan'), 2)
-Traceback (most recent call last):
-ValueError: cannot convert float NaN to integer
+The ``0-add_integer`` module
+============================
+
+Using ``add_integer``
+---------------------
+
+Import the function:
+
+    >>> add_integer = __import__('0-add_integer').add_integer
+
+Adding two positive integers:
+
+    >>> add_integer(1, 2)
+    3
+
+Adding a negative integer:
+
+    >>> add_integer(100, -2)
+    98
+
+Relying on the default value of b:
+
+    >>> add_integer(2)
+    100
+
+Floats are cast down to integers before adding:
+
+    >>> add_integer(100.3, -2)
+    98
+
+    >>> add_integer(2.9, 0.9)
+    2
+
+Negative floats are truncated toward zero:
+
+    >>> add_integer(-1.9, 0)
+    -1
+
+A non-numeric first argument raises a TypeError:
+
+    >>> add_integer(None)
+    Traceback (most recent call last):
+    TypeError: a must be an integer
+
+    >>> add_integer("School", 2)
+    Traceback (most recent call last):
+    TypeError: a must be an integer
+
+A non-numeric second argument raises a TypeError:
+
+    >>> add_integer(4, "School")
+    Traceback (most recent call last):
+    TypeError: b must be an integer
+
+    >>> add_integer(4, None)
+    Traceback (most recent call last):
+    TypeError: b must be an integer
+
+Missing both arguments raises a TypeError:
+
+    >>> add_integer()
+    Traceback (most recent call last):
+    TypeError: add_integer() missing 1 required positional argument: 'a'
