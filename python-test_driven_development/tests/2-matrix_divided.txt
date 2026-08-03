@@ -34,6 +34,22 @@ Dividing by a negative number:
     >>> matrix_divided([[1, 2], [3, 4]], -2)
     [[-0.5, -1.0], [-1.5, -2.0]]
 
+Infinity and NaN are valid floats and divide normally:
+
+    >>> matrix_divided([[1, 2], [3, float('inf')]], 2)
+    [[0.5, 1.0], [1.5, inf]]
+
+    >>> matrix_divided([[float('-inf'), 2]], 3)
+    [[-inf, 0.67]]
+
+    >>> matrix_divided([[1, 2], [3, float('nan')]], 2)
+    [[0.5, 1.0], [1.5, nan]]
+
+Dividing by infinity gives zero for every element:
+
+    >>> matrix_divided([[1, 2], [3, 4]], float('inf'))
+    [[0.0, 0.0], [0.0, 0.0]]
+
 Rows of different sizes raise a TypeError:
 
     >>> matrix_divided([[1, 2], [3, 4, 5]], 2)
